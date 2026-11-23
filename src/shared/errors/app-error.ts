@@ -1,0 +1,12 @@
+export class AppError extends Error {
+  constructor(
+    message: string,
+    public readonly statusCode = 500,
+    public readonly code = 'INTERNAL_SERVER_ERROR',
+    public readonly isOperational = true,
+  ) {
+    super(message);
+    this.name = 'AppError';
+    Error.captureStackTrace(this, this.constructor);
+  }
+}
